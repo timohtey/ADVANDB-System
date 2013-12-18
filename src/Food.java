@@ -28,9 +28,10 @@ public class Food {
 		        
 				try { 
 					PreparedStatement pstmt = myConnection.prepareStatement(insertQuery);
-					if(scanner.next() != null){
-						foodName.add(scanner.next());
-				        pstmt.setString(1, scanner.next());
+					String temp = scanner.next();
+					if(temp != null){
+						foodName.add(temp);
+				        pstmt.setString(1, temp);
 				        pstmt.setInt(2, 0);
 				        pstmt.executeUpdate();
 					}
