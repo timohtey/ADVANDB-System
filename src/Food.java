@@ -14,7 +14,7 @@ import db.DBConnectionFactory;
 public class Food {
 	private ArrayList<String> foodName = new ArrayList<String>();
 	private ArrayList<String> frequency = new ArrayList<String>();
-	private String insertQuery = "INSERT INTO food(food_name, food_frequency) values (?,?)";
+	private String insertQuery = "INSERT INTO food_list(food_name, food_frequency) values (?,?)";
 	public Food() {
 		Scanner scanner;
 		try {

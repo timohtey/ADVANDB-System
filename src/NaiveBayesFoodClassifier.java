@@ -1,10 +1,10 @@
 import java.util.ArrayList;
 
 
-public class NaiveBayesClassifier {
-	private String classified = "";
+public class NaiveBayesFoodClassifier{
+	protected String classified = "";
 	
-	public String classify(String tweet){
+	protected String classify(String tweet){
 		ArrayList<String> tokenList = new ArrayList<String>();
 		tokenList = tokenize(tweet);
 		if(computeHunger(tokenList) > computeCraving(tokenList)){
@@ -15,7 +15,7 @@ public class NaiveBayesClassifier {
 		return classified;
 	}
 
-	private ArrayList<String> tokenize(String tweet){
+	protected ArrayList<String> tokenize(String tweet){
 		ArrayList<String> tokenList = new ArrayList<String>();
 		String temp = "";
 		for(int i = 0; i<tweet.length(); i++){
@@ -31,7 +31,7 @@ public class NaiveBayesClassifier {
 		return tokenList;
 	}
 	
-	private float computeCraving(ArrayList<String> tokenList) {
+	protected float computeCraving(ArrayList<String> tokenList) {
 		Craving craving = new Craving();
 		ArrayList<Word> cravingWords = craving.getWords();
 		float computation = 1;
@@ -46,7 +46,7 @@ public class NaiveBayesClassifier {
 		return computation;
 	}
 
-	private float computeHunger(ArrayList<String> tokenList) {
+	protected float computeHunger(ArrayList<String> tokenList) {
 		Hunger hunger = new Hunger();
 		ArrayList<Word> hungerWords = hunger.getWords();
 		float computation = 1;

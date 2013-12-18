@@ -12,8 +12,8 @@ import db.DBConnectionFactory;
 public class Craving {
 	private ArrayList<Word> words;
 	private float percentage;
-	private String wordsQuery = "SELECT word_name, word_percentage FROM words WHERE word_classification = \"craving\"";
-	private String percentageQuery = "SELECT classification_percentage FROM main_classification WHERE classification_name = \"craving\"";
+	private String wordsQuery = "SELECT word_name, word_percentage FROM food_words WHERE word_classification = \"craving\"";
+	private String percentageQuery = "SELECT classification_percentage FROM food_classification WHERE classification_name = \"craving\"";
 	
 	public Craving(){
 		words = new ArrayList<Word>();
@@ -41,7 +41,7 @@ public class Craving {
         	}
 	        myConnection.close();
 	    } catch (SQLException ex) {
-	        Logger.getLogger(NaiveBayesClassifier.class.getName()).log(Level.SEVERE, null, ex);
+	        Logger.getLogger(Craving.class.getName()).log(Level.SEVERE, null, ex);
 	    }
 	}
 
