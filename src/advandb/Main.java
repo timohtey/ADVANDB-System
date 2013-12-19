@@ -80,7 +80,7 @@ public class Main {
 		
 		for(int i = 0; i<acceptedTweets.size(); i++){
 			String classified = naiveBayesFoodClassifier.classify(acceptedTweets.get(i).getTweet(),total);
-			System.out.println(classified);
+			tm.updateTweetClassification(classified, i+1);
 		}
 	}
 }

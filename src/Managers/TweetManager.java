@@ -185,4 +185,22 @@ public class TweetManager {
 		}
 		return tokenList;
 	}
+
+	public void updateTweetClassification(String classified, int i) {
+		String updateQuery = "UPDATE accepted_tweets SET tweet_classification ='"+classified+"'" +
+				"WHERE accepted_tweets_id = "+i+"";
+		try { 
+			DBConnectionFactory myFactory = DBConnectionFactory.getInstace();
+	        Connection myConnection = myFactory.getConnection();
+			PreparedStatement pstmt = myConnection.prepareStatement(updateQuery);
+			
+		    pstmt.executeUpdate();
+
+	        myConnection.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
 }
