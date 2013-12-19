@@ -1,3 +1,4 @@
+package advandb;
 
 public class Tweet {
 	private String username;
