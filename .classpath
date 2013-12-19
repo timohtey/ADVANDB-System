@@ -2,8 +2,8 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
-	<classpathentry kind="lib" path="/Users/joshua/Documents/Java Projects/ADVANDB/ADVANDB-System/lib/mysql-connector-java-5.1.24-bin.jar"/>
-	<classpathentry kind="lib" path="/Users/joshua/Documents/Java Projects/ADVANDB/ADVANDB-System/lib/jcommon-1.0.21.jar"/>
-	<classpathentry kind="lib" path="/Users/joshua/Documents/Java Projects/ADVANDB/ADVANDB-System/lib/jfreechart-1.0.17.jar"/>
+	<classpathentry kind="lib" path="C:/Users/TimothyJohn/Documents/GitHub/ADVANDB-System/mysql-connector-java-5.0.8-bin.jar"/>
+	<classpathentry kind="lib" path="C:/Users/TimothyJohn/Documents/GitHub/ADVANDB-System/lib/jcommon-1.0.21.jar"/>
+	<classpathentry kind="lib" path="C:/Users/TimothyJohn/Documents/GitHub/ADVANDB-System/lib/jfreechart-1.0.17.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
