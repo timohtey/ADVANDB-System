@@ -14,6 +14,8 @@ import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.DefaultCategoryDataset;
 
 import java.awt.Font;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.util.ArrayList;
 
 import advandb.Food;
@@ -21,8 +23,10 @@ import advandb.Food;
 public class VisualizeFrame extends JFrame{
 	
 	private JPanel barGraphPanel;
+	JComboBox<String> comboBox; 
 	private ArrayList<Food> foods;
-	private String[] food = {"Choose Food","apple", "banana", "bacon"};
+	private ArrayList<ArrayList<Food>> foods_;
+	private String[] food = {"apple", "banana", "bacon"};
 	
 	public VisualizeFrame(ArrayList<Food> foods){
 		super("Vizualization");
@@ -35,30 +39,74 @@ public class VisualizeFrame extends JFrame{
 		this.setVisible(true);
 		this.setResizable(false);
 		
+		/*
 		JFreeChart chart = ChartFactory.createBarChart("Food Frequencies", 
-				 "Food", "Frequency", createDataset(), PlotOrientation.VERTICAL, 
+				 "Food", "Frequency", createDataset1(), PlotOrientation.VERTICAL, 
+				 false, true, false);
+		*/
+		
+		foods_ = new ArrayList<ArrayList<Food>>();
+		ArrayList<Food> fa = new ArrayList<Food>();
+		fa.add(new Food("apple", 5));
+		fa.add(new Food("bacon", 2));
+		for (int i = 0; i < 12; i++)
+			foods_.add(fa);
+			
+		refresh();
+		
+	}
+	
+	public DefaultCategoryDataset createDataset1() {
+		
+		DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+				
+		for (int i = 0; i < foods.size(); i++) {
+			if (foods.get(i).getFrequency() > 0)
+				dataset.setValue(foods.get(i).getFrequency(), "Frequency", foods.get(i).getFoodName());
+		}
+		return dataset;
+	}
+	
+	
+	public DefaultCategoryDataset createDataset2() {
+		
+		DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+		
+		for (int i = 0; i < foods_.size(); i++) {
+			int j = 0;
+			while (j < foods_.get(i).size()) {
+				if (foods_.get(i).get(j).getFoodName().equals((String)comboBox.getSelectedItem()))
+					break;
+				j++;
+			}
+				
+			if (j != foods_.get(i).size()) 
+				dataset.setValue(foods_.get(i).get(j).getFrequency(), "Frequency", i + ":00");
+		}
+		return dataset;
+		
+	}
+	
+	public void refresh() {
+		
+		JFreeChart chart = ChartFactory.createBarChart("Frequency in Relation to Time", 
+				 "Time", "Frequency", createDataset2(), PlotOrientation.VERTICAL, 
 				 false, true, false);
 		
+		barGraphPanel.removeAll();
+		
 		ChartPanel chartPanel = new ChartPanel(chart);
-		chartPanel.setPreferredSize(new java.awt.Dimension(500, 270));
+		chartPanel.setPreferredSize(new java.awt.Dimension(724, 369));
 	    barGraphPanel.add(chartPanel);
 	    repaint();
 	    revalidate();
 	    System.out.println("Built chart");
-	}
-	
-	private DefaultCategoryDataset createDataset() {
 		
-		DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-				
-		for (int i = 0; i < 5; i++)
-			dataset.setValue(foods.get(i).getFrequency(), "Frequency", foods.get(i).getFoodName());
-		
-		return dataset;
 	}
 
 	private void initComponents() {
-		JComboBox<String> comboBox = new JComboBox<String>(food);
+		
+		comboBox = new JComboBox<String>(food);
 		//JComboBox<String> comboBox = new JComboBox<String>();
 		comboBox.setBounds(615, 31, 144, 32);
 		getContentPane().add(comboBox);
@@ -72,5 +120,12 @@ public class VisualizeFrame extends JFrame{
 		lblVisualization.setFont(new Font("Tahoma", Font.BOLD, 18));
 		lblVisualization.setBounds(35, 25, 175, 39);
 		getContentPane().add(lblVisualization);
+		
+		comboBox.addItemListener(new ItemListener() {
+	        @Override
+			public void itemStateChanged(ItemEvent e) {
+				refresh();
+			}
+	    });
 	}
 }

@@ -8,6 +8,12 @@ public class Food {
 		foodName = "";
 		frequency = 0;
 	}
+	
+	public Food(String name, int freq) {
+		foodName = name;
+		frequency = freq;
+	}
+	
 	public String getFoodName(){
 		return foodName;
 	}
