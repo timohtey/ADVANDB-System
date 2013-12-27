@@ -82,19 +82,19 @@ public class TweetManager {
 			ArrayList<String> tokenList = new ArrayList<String>();
 			tokenList = tokenize(tweets.get(i).getTweet());
 			for(int j = 0; j<tokenList.size()&& isFood == false;j++){
-//				for(int k = 0; k<foods.size()&& isFood == false;k++){
-//					if(tokenList.get(j).contains(foods.get(k).getFoodName())){
-//						
-//						isFood = true;
-//						Tweet tweet = new Tweet();
-//						tweet.setUsername(tweets.get(i).getUsername());
-//						tweet.setTimestamp(tweets.get(i).getTimestamp());
-//						tweet.setLocation(tweets.get(i).getLocation());
-//						tweet.setTweet(tweets.get(i).getTweet());
-//						insertAcceptedTweet(tweet);
-//						updateIsAccepted("Yes", i+1);
-//					}
-//				}
+				for(int k = 0; k<foods.size()&& isFood == false;k++){
+					if(tokenList.get(j).contains(foods.get(k).getFoodName())){
+						
+						isFood = true;
+						Tweet tweet = new Tweet();
+						tweet.setUsername(tweets.get(i).getUsername());
+						tweet.setTimestamp(tweets.get(i).getTimestamp());
+						tweet.setLocation(tweets.get(i).getLocation());
+						tweet.setTweet(tweets.get(i).getTweet());
+						insertAcceptedTweet(tweet);
+						updateIsAccepted("Yes", i+1);
+					}
+				}
 				for(int k = 0; k<words.size(); k++){
 					if(tokenList.get(j).equals(words.get(k).getWordName())){
 						words.get(k).addFrequency();
