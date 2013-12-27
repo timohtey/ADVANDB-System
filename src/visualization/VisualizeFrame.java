@@ -33,7 +33,7 @@ public class VisualizeFrame extends JFrame{
 		
 		this.foods = foods;
 		
-		this.setSize(800,500);
+		this.setSize(1280,785);
 		this.getContentPane().setLayout(null);
 		this.initComponents();
 		this.setVisible(true);
@@ -49,7 +49,7 @@ public class VisualizeFrame extends JFrame{
 		ArrayList<Food> fa = new ArrayList<Food>();
 		fa.add(new Food("apple", 5));
 		fa.add(new Food("bacon", 2));
-		for (int i = 0; i < 12; i++)
+		for (int i = 0; i < 24; i++)
 			foods_.add(fa);
 			
 		refresh();
@@ -96,7 +96,7 @@ public class VisualizeFrame extends JFrame{
 		barGraphPanel.removeAll();
 		
 		ChartPanel chartPanel = new ChartPanel(chart);
-		chartPanel.setPreferredSize(new java.awt.Dimension(724, 369));
+		chartPanel.setPreferredSize(new java.awt.Dimension(1260, 685));
 	    barGraphPanel.add(chartPanel);
 	    repaint();
 	    revalidate();
@@ -108,17 +108,17 @@ public class VisualizeFrame extends JFrame{
 		
 		comboBox = new JComboBox<String>(food);
 		//JComboBox<String> comboBox = new JComboBox<String>();
-		comboBox.setBounds(615, 31, 144, 32);
+		comboBox.setBounds(1120, 10, 150, 40);
 		getContentPane().add(comboBox);
 		
 		barGraphPanel = new JPanel();
-		barGraphPanel.setBounds(35, 74, 724, 369);
+		barGraphPanel.setBounds(10, 60, 1260, 685);
 		barGraphPanel.setBackground(Color.WHITE);
 		getContentPane().add(barGraphPanel);
 		
 		JLabel lblVisualization = new JLabel("Visualization");
 		lblVisualization.setFont(new Font("Tahoma", Font.BOLD, 18));
-		lblVisualization.setBounds(35, 25, 175, 39);
+		lblVisualization.setBounds(10, 10, 176, 40);
 		getContentPane().add(lblVisualization);
 		
 		comboBox.addItemListener(new ItemListener() {
